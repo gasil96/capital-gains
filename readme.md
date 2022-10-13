@@ -1,6 +1,42 @@
 # Code Challenge: Ganho de Capital
 
-### Projeto desenvolvido com o objetivo de de cumprir as demandas repassadas do desafio com as premissas de realizar um código: Simples, Elegante e Operacional 
+### O objetivo deste projeto é implementar um programa de linha de comando (CLI) que calcula o imposto a ser pago sobre lucros ou prejuízos de operações no mercado financeiro de ações. Com as premissas de realizar um código: Simples, Elegante e Operacional 
+
+## Regras do Ganho de Capital
+
+O programa deve lidar com dois tipos de operações ( buy e sell ) e ele deve seguir as seguintes regras:
+O percentual de imposto pago é de 20% sobre o lucro obtido na operação. Ou seja, o imposto vai ser
+pago quando há uma operação de venda cujo preço é superior ao preço médio ponderado de compra.
+Para determinar se a operação resultou em lucro ou prejuízo, você pode calcular o preço médio
+ponderado, então quando você compra ações você deve recalcular o preço médio ponderado
+utilizando essa fórmula: nova-media-ponderada = ((quantidade-de-acoes-atual * media-ponderadaatual) + (quantidade-de-acoes * valor-de-compra)) / (quantidade-de-acoes-atual + quantidadede-acoes-compradas) . Por exemplo, se você comprou 10 ações por R$ 20,00, vendeu 5, depois
+comprou outras 5 por R$ 10,00, a média ponderada é ((5 x 20.00) + (5 x 10.00)) / (5 + 5) =
+15.00 .
+Você deve usar o prejuízo passado para deduzir múltiplos lucros futuros, até que todo prejuízo seja
+deduzido.
+Prejuízos acontecem quando você vende ações a um valor menor do que o preço médio ponderado de
+compra. Neste caso, nenhum imposto deve ser pago e você deve subtrair o prejuízo dos lucros
+seguintes, antes de calcular o imposto.
+Você não paga nenhum imposto se o valor total da operação (custo unitário da ação x quantidade) for
+menor ou igual a R$ 20000,00. Use o valor total da operação e não o lucro obtido para determinar se o
+imposto deve ou não ser pago. E não se esqueça de deduzir o prejuízo dos lucros seguintes.
+Nenhum imposto é pago em operações de compra.
+Você pode assumir que nenhuma operação vai vender mais ações do que você tem naquele momento
+
+## Exemplo
+
+### Este é um exemplo da entrada:
+```json
+[{"operation":"buy", "unit-cost":10.00, "quantity": 10000},
+{"operation":"sell", "unit-cost":20.00, "quantity": 5000}]
+[{"operation":"buy", "unit-cost":20.00, "quantity": 10000},
+{"operation":"sell", "unit-cost":10.00, "quantity": 5000}]
+```
+### Este é um exemplo da saída:
+```json
+[{"tax":0.00}, {"tax":10000.00}]
+[{"tax":0.00}, {"tax":0.00}]
+```
 
 ## Sobre o projeto
 
